@@ -233,4 +233,6 @@ alki.render = function()
 };
 alki.render();
 
-
+function why(){
+    alert("why?");
+};
