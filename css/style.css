@@ -6,13 +6,13 @@ body
 }
 #titleBar
 {
- position: absolute;
- background-color: rgb(86, 173, 199);
- right: 40%;
- width: 80%;
- border-bottom: gray 5px ridge;
- border-right: gray 5px ridge;
- transform: skewX(-30deg);
+    position: absolute;
+    background-color: rgb(86, 173, 199);
+    right: 40%;
+    width: 80%;
+    border-bottom: gray 5px ridge;
+    border-right: gray 5px ridge;
+    transform: skewX(-30deg);
 }
 #aboutUs
 {
