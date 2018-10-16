@@ -20,6 +20,15 @@ function LocationDemo(locationName, minCustomersHourly, maxCustomersHourly, cook
   this.cookiesTotal = 0;
   locations.push(this);
 }
+
+//new Location Instances
+new LocationDemo('First and Pike', 23, 65, 6.3);
+new LocationDemo('Seatac Airport', 2, 24, 1.2);
+new LocationDemo('Seattle Center', 11, 38, 3.7);
+new LocationDemo('Capitol Hill', 20, 38, 2.3);
+new LocationDemo('Alki', 2, 16, 4.6);
+console.table(locations)
+
 //===================
 //Location Prototypes
 //===================
@@ -46,6 +55,7 @@ LocationDemo.prototype.sampleCookies = function()
   console.table(locations);
 }
 //Populate all instances of customersHourly and cookiesHourly and cookiesTotal
+
 function populateTable()
 {
   for(var i = 0; i < locations.length; i++){
@@ -55,35 +65,47 @@ function populateTable()
   console.table(locations);
 }
 
+populateTable();
+
+
+
 //===============
 //Location Render
 //===============
 
-// LocationDemo.prototype.render = function ()
-// {
-//   var trEl = document.createElement('tr');
-//   var tdEl = document.createElement('td');
-//   //Name First Column Name
-//   tdEl.textContent = this.locationName;
-//   trEl.appendChild(tdEl);
+var salmonTable = document.getElementById('data');
 
-//   for(var i = 0; i < hours.length; i++){
-//     tdEl = document.createElement('td');
-//     tdEl.textContent = this.cookiesHourly[i];
-//     trEl.appendChild(tdEl);
-//   }
-//   dataTable.appendChild(trEl);
-// };
+LocationDemo.prototype.render = function()
+{
+  var trEl = document.createElement('tr');
+  var tdEl = document.createElement('td');
+  //Name First Column
+  tdEl.textContent = this.locationName;
+  trEl.appendChild(tdEl);
+
+  //Fill all hour Cells
+  for(var i = 0; i < hours.length; i++){
+    tdEl = document.createElement('td');
+    tdEl.textContent = this.cookiesHourly[i];
+    trEl.appendChild(tdEl);
+  }
+
+  //Fill the Total Cell
+  tdEl = document.createElement('td');
+  tdEl.textContent = this.cookiesTotal;
+  trEl.appendChild(tdEl)
+
+  salmonTable.appendChild(trEl);
+};
 
 //run all
-// for(var i = 0; i < LocationDemo.locations.length; i++)
+function renderTable()
+{
+    for(var i = 0; i < locations.length; i++)
+    {
+        locations[i].render();
+    }
+}
+renderTable();
 
 
-
-//new Location Instances
-new LocationDemo('First and Pike', 23, 65, 6.3);
-new LocationDemo('Seatac Airport', 2, 24, 1.2);
-new LocationDemo('Seattle Center', 11, 38, 3.7);
-new LocationDemo('Capitol Hill', 20, 38, 2.3);
-new LocationDemo('Alki', 2, 16, 4.6);
-console.table(locations)

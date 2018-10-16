@@ -1,12 +1,26 @@
-body
-{
-    margin-left: 10%;
-}
-h1
-{
-    font-size: 3.0vw;
-}
-h2
-{   
-    font-size: 2.0vw;
-}
+* {
+    font-family: 'Baloo', cursive;
+  }
+  
+  body {
+    background: #ccc;
+  }
+  
+  table {
+    border: 10px solid black;
+    margin-left: 10px;
+    padding: 10px;
+  }
+  
+  td {
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid black;
+    background: white;
+  }
+  
+  th {
+    background-color: navy;
+    color: white;
+    margin-left: 10px;
+  }
