@@ -1,6 +1,6 @@
 'use strict';
 
-var hours = ['7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm']
+var hours = ['7am', '8am', '9am', '10am', '11am', '12pm', 'Toyota-thon', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm']
 
 //Create All String
 var locations = [];
@@ -75,6 +75,20 @@ populateTable();
 
 var salmonTable = document.getElementById('data');
 
+//Render Header
+function renderHeader(){
+  var trEl = document.createElement('tr');
+  var tdEl = document.createElement('td')
+  trEl.appendChild(tdEl);
+  for(var i = 0; i < hours.length; i++)
+  {
+    tdEl = document.createElement('td');
+    tdEl.textContent = hours[i];
+    trEl.appendChild(tdEl);
+  }
+  salmonTable.appendChild(trEl);
+}
+//Render Cell Data
 LocationDemo.prototype.render = function()
 {
   var trEl = document.createElement('tr');
@@ -101,11 +115,12 @@ LocationDemo.prototype.render = function()
 //run all
 function renderTable()
 {
-    for(var i = 0; i < locations.length; i++)
-    {
-        locations[i].render();
-    }
+  for(var i = 0; i < locations.length; i++)
+  {
+    renderHeader();
+    locations[i].render();
+  }
 }
-renderTable();
+// renderTable();
 
 
