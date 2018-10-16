@@ -4,7 +4,8 @@ var hours = ['7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '
 
 //Create All String
 var locations = [];
-
+//Create hourlyTotal String
+var hourlyTotal = [];
 function random(min, max){
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
@@ -60,6 +61,27 @@ function populateTable()
 }
 populateTable();
 
+//grab every index{i} of hour [j]
+function pollHourly()
+{
+  //Fill string with blank values
+  // for(var i = 0; i < hours.length; i++)
+  // {
+  //   var blank = 0;
+  //   hourlyTotal.push(blank);
+	// }
+	for(var i = 0; i < hours.length; i++)
+	{
+		var newStore = 0
+		for(var j = 0; j < locations.length; j++){
+		hourlyTotal[i] = newStore + locations[j].cookiesHourly[i];
+		console.log (`${hourlyTotal} += ${locations[0].cookiesHourly[i]}`)
+		}
+	}
+
+}
+pollHourly();
+
 //Renders
 //Call HTML element into variable
 var salmonTable = document.getElementById('data');
@@ -110,7 +132,24 @@ LocationDemo.prototype.render = function()
   salmonTable.appendChild(trEl);
 };
 
-//render all
+//Render Footer
+function renderFoot(){
+  var trEl = document.createElement('tr');
+  var tdEl = document.createElement('td');
+  //Name First
+  tdEl.textContent = 'Hourly Total\s';
+	trEl.appendChild(tdEl);
+	
+	//Fill all total Cells
+	for(var i = 0; i < hours.length; i++){
+		tdEl =document.createElement('td');
+		tdEl.textContent = hourlyTotal[i];
+		trEl.appendChild(tdEl);
+	}
+
+  salmonTable.appendChild(trEl);
+}
+//Render all
 function renderTable()
 {
   renderHeader();
@@ -118,7 +157,10 @@ function renderTable()
   {
     locations[i].render();
   }
+  renderFoot();
 }
 renderTable();
 
-
+function why(){
+  alert('why?');
+}
