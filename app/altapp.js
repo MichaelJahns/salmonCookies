@@ -6,6 +6,8 @@ var hours = ['7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '
 var locations = [];
 //Create hourlyTotal String
 var hourlyTotal = [];
+var totalOfTotals = 0;
+
 function random(min, max){
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
@@ -65,19 +67,20 @@ populateTable();
 function pollHourly()
 {
   //Fill string with blank values
-  // for(var i = 0; i < hours.length; i++)
-  // {
-  //   var blank = 0;
-  //   hourlyTotal.push(blank);
-	// }
-	for(var i = 0; i < hours.length; i++)
-	{
-		var newStore = 0
-		for(var j = 0; j < locations.length; j++){
-		hourlyTotal[i] = newStore + locations[j].cookiesHourly[i];
-		console.log (`${hourlyTotal} += ${locations[0].cookiesHourly[i]}`)
+  for(var i = 0; i < hours.length; i++)
+  {
+    var blank = 0;
+		hourlyTotal.push(blank);
+  }
+  for(var i = 0; i < hours.length; i++)
+  {
+    for(var j = 0; j < locations.length; j++){
+			hourlyTotal[i] = hourlyTotal[i] + locations[j].cookiesHourly[i];
+			console.log (`${hourlyTotal} += ${locations[0].cookiesHourly[i]}`)
 		}
+		totalOfTotals += hourlyTotal[i]
 	}
+	return(totalOfTotals);
 
 }
 pollHourly();
@@ -125,9 +128,9 @@ LocationDemo.prototype.render = function()
   }
 
   //Fill the Total Cell
-  tdEl = document.createElement('td');
-  tdEl.textContent = this.cookiesTotal;
-  trEl.appendChild(tdEl)
+  var thEl = document.createElement('th');
+  thEl.textContent = this.cookiesTotal;
+  trEl.appendChild(thEl)
 
   salmonTable.appendChild(trEl);
 };
@@ -135,18 +138,22 @@ LocationDemo.prototype.render = function()
 //Render Footer
 function renderFoot(){
   var trEl = document.createElement('tr');
-  var tdEl = document.createElement('td');
+  var thEl = document.createElement('th');
   //Name First
-  tdEl.textContent = 'Hourly Total\s';
-	trEl.appendChild(tdEl);
-	
-	//Fill all total Cells
-	for(var i = 0; i < hours.length; i++){
-		tdEl =document.createElement('td');
-		tdEl.textContent = hourlyTotal[i];
-		trEl.appendChild(tdEl);
-	}
+  thEl.textContent = 'Hourly Total\s';
+  trEl.appendChild(thEl);
 
+  //Fill all total Cells
+  for(var i = 0; i < hours.length; i++){
+    thEl =document.createElement('th');
+    thEl.textContent = hourlyTotal[i];
+    trEl.appendChild(thEl);
+  }
+
+	//totalOfTotals Cell
+	thEl = document.createElement('th');
+	thEl.textContent = totalOfTotals;
+	trEl.appendChild(thEl);
   salmonTable.appendChild(trEl);
 }
 //Render all

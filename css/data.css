@@ -19,19 +19,35 @@ table
     font-size: 1.5vw;
     font-family: 'K2D', sans-serif;;
 }
-  
-  td {
-    padding: 10px;
+td:first-child
+{
+    border-right: 1px black solid;
+    border-bottom: 1px black solid;
+}
+td 
+{
+    padding: 5px;
     margin: 10px;
-    border: 1px solid black;
     background: white;
-  }
-  
-  th {
+    text-align: center;
+}
+th:last-child
+{
+    border-left: black 1px solid;
+}
+th:first-child
+{
+    border-right: black 1px solid;
+}
+th
+{
     background-color: rgb(86, 173, 199);
     color: white;
     margin-left: 10px;
-  }
+    padding: 10px;
+    border-top: black 1px solid;
+    border-bottom: black 1px solid;
+}
 
 /*Title Bar */
 #titleBar
