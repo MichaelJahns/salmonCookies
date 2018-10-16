@@ -27,11 +27,8 @@ new LocationDemo('Seatac Airport', 2, 24, 1.2);
 new LocationDemo('Seattle Center', 11, 38, 3.7);
 new LocationDemo('Capitol Hill', 20, 38, 2.3);
 new LocationDemo('Alki', 2, 16, 4.6);
-// console.table(locations)
 
-//===================
 //Location Prototypes
-//===================
 
 //Populate one instance of customersHourly
 LocationDemo.prototype.sampleCustomers = function()
@@ -40,7 +37,6 @@ LocationDemo.prototype.sampleCustomers = function()
     var sampleCustomers = random(this.minCustomersHourly, this.maxCustomersHourly)
     this.customersHourly.push(sampleCustomers);
   }
-  // console.table(locations)
 };
 
 //Populate one instance of cookiesHourly and cookiesTotal
@@ -52,46 +48,38 @@ LocationDemo.prototype.sampleCookies = function()
     this.cookiesHourly.push(sampleCookies);
     this.cookiesTotal += sampleCookies;
   }
-  // console.table(locations);
 }
-//Populate all instances of customersHourly and cookiesHourly and cookiesTotal
 
+//Populate all instances of customersHourly and cookiesHourly and cookiesTotal
 function populateTable()
 {
   for(var i = 0; i < locations.length; i++){
     locations[i].sampleCustomers();
     locations[i].sampleCookies();
   }
-  // console.table(locations);
 }
-
 populateTable();
 
-
-
-//===============
-//Location Render
-//===============
-
+//Renders
+//Call HTML element into variable
 var salmonTable = document.getElementById('data');
-
 
 //Render Header
 function renderHeader(){
   //Blank Top Left Space
   var trEl = document.createElement('tr');
   var thEl = document.createElement('th')
-	trEl.appendChild(thEl);
-	//All Hour Values
+  trEl.appendChild(thEl);
+  //All Hour Values
   for(var i = 0; i < hours.length; i++)
   {
     thEl = document.createElement('th');
     thEl.textContent = hours[i];
     trEl.appendChild(thEl);
-	}
-	//Total Value Column
+  }
+  //Total Value Column
   thEl = document.createElement('th');
-  thEl.textContent = "Total";
+  thEl.textContent = 'Total';
   trEl.appendChild(thEl);
 
   salmonTable.appendChild(trEl);
@@ -122,7 +110,7 @@ LocationDemo.prototype.render = function()
   salmonTable.appendChild(trEl);
 };
 
-//run all
+//render all
 function renderTable()
 {
   renderHeader();
