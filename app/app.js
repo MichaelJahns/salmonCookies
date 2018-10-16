@@ -15,11 +15,8 @@ pikeAndFirst.cookiesSold = function()
 {
   for (var i = 0; i < hours.length; i++)
   {
-    // console.log(`I is ${i}`);
     var randomCustomers = Math.floor(Math.random() * (this.customersMaxByHour - this.customersMinByHour +1 )) + this.customersMinByHour;
-    // console.log('Number of customers this hours: ' + randomCustomers);
     var cookiesSold = Math.floor(randomCustomers * this.cookiesSoldAverage);
-    // console.log('Cookies sold this hour: ' + cookiesSold);
     pikeAndFirst.cookiesByHour.push(cookiesSold);
     this.cookiesTotal += cookiesSold;
   }
