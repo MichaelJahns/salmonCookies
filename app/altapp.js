@@ -1,6 +1,6 @@
 'use strict';
 
-var hours = ['7am', '8am', '9am', '10am', '11am', '12pm', 'Toyota-thon', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm']
+var hours = ['7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm']
 
 //Create All String
 var locations = [];
@@ -27,7 +27,7 @@ new LocationDemo('Seatac Airport', 2, 24, 1.2);
 new LocationDemo('Seattle Center', 11, 38, 3.7);
 new LocationDemo('Capitol Hill', 20, 38, 2.3);
 new LocationDemo('Alki', 2, 16, 4.6);
-console.table(locations)
+// console.table(locations)
 
 //===================
 //Location Prototypes
@@ -40,7 +40,7 @@ LocationDemo.prototype.sampleCustomers = function()
     var sampleCustomers = random(this.minCustomersHourly, this.maxCustomersHourly)
     this.customersHourly.push(sampleCustomers);
   }
-  console.table(locations)
+  // console.table(locations)
 };
 
 //Populate one instance of cookiesHourly and cookiesTotal
@@ -52,7 +52,7 @@ LocationDemo.prototype.sampleCookies = function()
     this.cookiesHourly.push(sampleCookies);
     this.cookiesTotal += sampleCookies;
   }
-  console.table(locations);
+  // console.table(locations);
 }
 //Populate all instances of customersHourly and cookiesHourly and cookiesTotal
 
@@ -62,7 +62,7 @@ function populateTable()
     locations[i].sampleCustomers();
     locations[i].sampleCookies();
   }
-  console.table(locations);
+  // console.table(locations);
 }
 
 populateTable();
@@ -75,19 +75,29 @@ populateTable();
 
 var salmonTable = document.getElementById('data');
 
+
 //Render Header
 function renderHeader(){
+  //Blank Top Left Space
   var trEl = document.createElement('tr');
-  var tdEl = document.createElement('td')
-  trEl.appendChild(tdEl);
+  var thEl = document.createElement('th')
+	trEl.appendChild(thEl);
+	//All Hour Values
   for(var i = 0; i < hours.length; i++)
   {
-    tdEl = document.createElement('td');
-    tdEl.textContent = hours[i];
-    trEl.appendChild(tdEl);
-  }
+    thEl = document.createElement('th');
+    thEl.textContent = hours[i];
+    trEl.appendChild(thEl);
+	}
+	//Total Value Column
+  thEl = document.createElement('th');
+  thEl.textContent = "Total";
+  trEl.appendChild(thEl);
+
   salmonTable.appendChild(trEl);
 }
+
+
 //Render Cell Data
 LocationDemo.prototype.render = function()
 {
@@ -115,12 +125,12 @@ LocationDemo.prototype.render = function()
 //run all
 function renderTable()
 {
+  renderHeader();
   for(var i = 0; i < locations.length; i++)
   {
-    renderHeader();
     locations[i].render();
   }
 }
-// renderTable();
+renderTable();
 
 
