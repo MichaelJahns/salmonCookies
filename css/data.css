@@ -1,22 +1,27 @@
-* {
+*
+{
     font-family: 'Baloo', cursive;
-  }
+}
   
-  body
+ body
 {
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 2.5vw;
-    background-color: rgb(170, 216, 216);
+    background-color: rgb(194, 214, 214);
 }
 /* Table */
 #staff
 {
     margin-bottom: 30%;
 }
+table:first-child
+{
+    margin-top: 17%;
+}
 table
 {
     border: 5px ridge gray;
-    margin-top: 17%;
+    margin-top: 5%;
     margin-left: auto;
     margin-right: auto;
     padding: 10px;
@@ -28,6 +33,10 @@ td:first-child
 {
     border-right: 1px black solid;
     border-bottom: 1px black solid;
+}
+tr
+{
+    background-color: rgb(184, 188, 189);
 }
 td 
 {
@@ -153,4 +162,41 @@ a
 {
     color: inherit;
     text-decoration: none;
+}
+/* Body Paragraphs*/
+#aboutUs
+{
+    margin-top: 20%;
+}
+#ourStory
+{
+    margin-bottom: 20%;
+}
+.bodyBlock
+{
+    font-size: 1.5vw;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 5%;
+    border: 1px gray solid;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: rgb(170, 216, 216);
+}
+.bodyBlock > fieldset
+{
+    border: 1px gray solid;
+    border-radius: 10px;
+    padding: 10px;
+    position: relative; 
+    top : -2em;
+    margin-left: 1em;
+    display: inline; 
+    background-color: rgb(86, 173, 199); 
+}
+.bodyBlock > p
+{
+    position: relative;
+    margin-top: 1%;
+    padding: 5px;
 }

@@ -23,8 +23,8 @@ function LocationDemo(locationName, minCustomersHourly, maxCustomersHourly, cook
   this.customersHourly = [];
   this.cookiesHourly = [];
   this.cookiesTotal = 0;
-	this.staffNeeded = [];
-	this.staffTotal = 0;
+  this.staffNeeded = [];
+  this.staffTotal = 0;
   locations.push(this);
 }
 
@@ -64,9 +64,9 @@ LocationDemo.prototype.staffing = function()
     this.staffNeeded[i] = 2
     if (this.cookiesHourly[i] > 40)
     {
-			this.staffNeeded[i] = Math.ceil((this.cookiesHourly[i]-40) /20) +2;
-		}
-		this.staffTotal += this.staffNeeded[i];
+      this.staffNeeded[i] = Math.ceil((this.cookiesHourly[i]-40) /20) +2;
+    }
+    this.staffTotal += this.staffNeeded[i];
   }
   console.table(locations);
 }
