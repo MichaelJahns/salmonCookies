@@ -90,6 +90,8 @@ function populateTable()
 //Hourly Cookie and Staff Totals
 function pollTotals()
 {
+  totalOfTotals = 0;
+  totalOfStaffTotals = 0;
   //Fill string with blank values
   for(var k = 0; k < hours.length; k++)
   {
@@ -197,12 +199,30 @@ function renderFooter(){
   createElement('th', totalOfStaffTotals, trEl);
   staffTable.appendChild(trEl);
 }
+function Render(){
+
+}
 //========================================
 //Executable Code
 
 function submit(event){
   console.log(`New Store Data has been submitted.`);
   event.preventDefault();
+
+  var existing = false;
+  for(var i = 0; i < locations.length; i++){
+    if(locations[i].locationName.includes(form.where.value))
+    {
+      existing = true;
+      console.log(existing);
+      locations.splice(i, 1);
+      break;
+    }
+    else
+    {
+      console.log(existing);
+    }
+  }
 
   new LocationDemo(form.where.value, parseInt(form.min.value), parseInt(form.max.value), parseInt(form.average.value));
 
@@ -211,7 +231,6 @@ function submit(event){
   form.min.value = null;
   form.max.value = null;
   form.average.value = null;
-  console.table(locations)
 }
 submission.addEventListener('click', submit);
 
