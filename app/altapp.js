@@ -199,11 +199,11 @@ function renderFooter(){
 }
 //========================================
 //Executable Code
+
 function submit(event){
   console.log(`New Store Data has been submitted.`);
   event.preventDefault();
 
-  if(Locationdemo.includse form.where.value ===)
   new LocationDemo(form.where.value, parseInt(form.min.value), parseInt(form.max.value), parseInt(form.average.value));
 
   refreshPage();
