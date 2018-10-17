@@ -10,9 +10,9 @@ var staffTotal = [];
 var totalOfTotals = 0;
 var totalOfStaffTotals = 0;
 
-function random(min, max){
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+var staffTable = document.getElementById('staff');
+var salmonTable = document.getElementById('data');
+
 //Location Constructor
 function LocationDemo(locationName, minCustomersHourly, maxCustomersHourly, cookiesPerCustomer)
 {
@@ -80,8 +80,6 @@ function populateTable()
     locations[i].staffing();
   }
 }
-populateTable();
-
 //Hourly Cookie Totals
 function pollHourly()
 {
@@ -101,9 +99,7 @@ function pollHourly()
     totalOfTotals += hourlyTotal[i]
   }
   return(totalOfTotals);
-
 }
-pollHourly();
 
 //Hourly Staff Needs
 function pollStaff()
@@ -123,176 +119,87 @@ function pollStaff()
     totalOfStaffTotals += staffTotal[i]
   }
   return(totalOfTotals);
-
 }
-pollStaff();
-//Renders
-//Call HTML element into variable
-var salmonTable = document.getElementById('data');
-
-//Table One
-//Render Header
-function renderHeader(){
-  //Blank Top Left Space
-  var trEl = document.createElement('tr');
-  var thEl = document.createElement('th');
-  thEl.textContent = 'Cookie Sales';
-  trEl.appendChild(thEl);
-  //All Hour Values
-  for(var i = 0; i < hours.length; i++)
-  {
-    thEl = document.createElement('th');
-    thEl.textContent = hours[i];
-    trEl.appendChild(thEl);
-  }
-  //Total Value Column
-  thEl = document.createElement('th');
-  thEl.textContent = 'Total';
-  trEl.appendChild(thEl);
-
-  salmonTable.appendChild(trEl);
+//Helper Functions
+function random(min, max){
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-
-
-//Render Cell Data
-LocationDemo.prototype.render = function()
-{
-  var trEl = document.createElement('tr');
-  var tdEl = document.createElement('td');
-  //Name First Column
-  tdEl.textContent = this.locationName;
-  trEl.appendChild(tdEl);
-
-  //Fill all hour Cells
-  for(var i = 0; i < hours.length; i++){
-    tdEl = document.createElement('td');
-    tdEl.textContent = this.cookiesHourly[i];
-    trEl.appendChild(tdEl);
-  }
-
-  //Fill the Total Cell
-  var thEl = document.createElement('th');
-  thEl.textContent = this.cookiesTotal;
-  trEl.appendChild(thEl)
-
-  salmonTable.appendChild(trEl);
-};
-
-//Render Footer
-function renderFoot(){
-  var trEl = document.createElement('tr');
-  var thEl = document.createElement('th');
-  //Name First
-  thEl.textContent = 'Hourly Total\s';
-  trEl.appendChild(thEl);
-
-  //Fill all total Cells
-  for(var i = 0; i < hours.length; i++){
-    thEl =document.createElement('th');
-    thEl.textContent = hourlyTotal[i];
-    trEl.appendChild(thEl);
-  }
-
-  //totalOfTotals Cell
-  thEl = document.createElement('th');
-  thEl.textContent = totalOfTotals;
-  trEl.appendChild(thEl);
-  salmonTable.appendChild(trEl);
+function createElement(type, content, parent){
+  var element = document.createElement(type);
+  element.textContent = content;
+  parent.appendChild(element);
 }
-//Render all
-function renderTable()
-{
+function renderTables(){
   renderHeader();
-  for(var i = 0; i < locations.length; i++)
-  {
-    locations[i].render();
+  for(var i = 0; i < locations.length; i++){
+    locations[i].renderBody();
   }
-  renderFoot();
+  renderFooter();
 }
-renderTable();
 
-//Table Two
-var staffTable = document.getElementById('staff');
-function renderHeaderTableTwo(){
-  //Blank Top Left Space
+//Render Functions
+
+function renderHeader(){
+  //Table Sales
   var trEl = document.createElement('tr');
-  var thEl = document.createElement('th')
-  thEl.textContent = 'Staff Needed';
-  trEl.appendChild(thEl);
-  //All Hour Values
+  createElement('th', 'Cookie Sales', trEl);
   for(var i = 0; i < hours.length; i++)
   {
-    thEl = document.createElement('th');
-    thEl.textContent = hours[i];
-    trEl.appendChild(thEl);
+    createElement('th', hours[i], trEl);
   }
-  //Total Value Column
-  thEl = document.createElement('th');
-  thEl.textContent = 'Total';
-  trEl.appendChild(thEl);
-
+  createElement('th', 'Total', trEl);
+  salmonTable.appendChild(trEl);
+  //Table Staff
+  trEl = document.createElement('tr');
+  createElement('th', 'Staff Needed', trEl);
+  for(var j = 0; j < hours.length; j++)
+  {
+    createElement('th', hours[j], trEl);
+  }
+  createElement('th', 'Total', trEl);
   staffTable.appendChild(trEl);
 }
-
-
-//Render Cell Data
-LocationDemo.prototype.renderStaff = function()
+LocationDemo.prototype.renderBody = function()
 {
+  //Table Sales
   var trEl = document.createElement('tr');
-  var tdEl = document.createElement('td');
-  //Name First Column
-  tdEl.textContent = this.locationName;
-  trEl.appendChild(tdEl);
-
-  //Fill all hour Cells
+  createElement('td', this.locationName, trEl);
   for(var i = 0; i < hours.length; i++){
-    tdEl = document.createElement('td');
-    tdEl.textContent = this.staffNeeded[i];
-    trEl.appendChild(tdEl);
+    createElement('td', this.cookiesHourly[i], trEl);
   }
+  createElement('th', this.cookiesTotal, trEl);
+  salmonTable.appendChild(trEl);
 
-  //Fill the Total Cell
-  var thEl = document.createElement('th');
-  thEl.textContent = this.staffTotal;
-  trEl.appendChild(thEl)
-
+  //Table Staff
+  trEl = document.createElement('tr');
+  createElement('td', this.locationName, trEl);
+  for(var j = 0; j < hours.length; j++){
+    createElement('td', this.staffNeeded[j], trEl);
+  }
+  createElement('th',this.staffTotal, trEl);
   staffTable.appendChild(trEl);
 };
-
-//Render Footer
-function renderFootTableTwo(){
+function renderFooter(){
+  //Table Sales
   var trEl = document.createElement('tr');
-  var thEl = document.createElement('th');
-  //Name First
-  thEl.textContent = 'Hourly Total\s';
-  trEl.appendChild(thEl);
-
-  //Fill all total Cells
+  createElement('th', 'Hourly Total\'s', trEl)
   for(var i = 0; i < hours.length; i++){
-    thEl =document.createElement('th');
-    thEl.textContent = staffTotal[i];
-    trEl.appendChild(thEl);
+    createElement('th', hourlyTotal[i], trEl);
   }
-
-  //totalOfTotals Cell
-  thEl = document.createElement('th');
-  thEl.textContent = totalOfStaffTotals;
-  trEl.appendChild(thEl);
+  createElement('th', totalOfTotals, trEl);
+  salmonTable.appendChild(trEl);
+  //Table Staff
+  trEl = document.createElement('tr');
+  createElement('th','Hourly Total\'s', trEl);
+  for(var j = 0; j < hours.length; j++){
+    createElement('th', staffTotal[j],trEl);
+  }
+  createElement('th', totalOfStaffTotals, trEl);
   staffTable.appendChild(trEl);
 }
-//Render all
-function renderTableTwo()
-{
-  renderHeaderTableTwo();
-  for(var i = 0; i < locations.length; i++)
-  {
-    locations[i].renderStaff();
-  }
-  renderFootTableTwo();
-}
-renderTableTwo();
-
-
-function why(){
-  alert('why?');
-}
+//========================================
+//Executable Code
+populateTable();
+pollHourly();
+pollStaff();
+renderTables();
