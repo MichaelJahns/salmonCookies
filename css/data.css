@@ -9,15 +9,20 @@
     background-color: rgb(170, 216, 216);
 }
 /* Table */
+#staff
+{
+    margin-bottom: 30%;
+}
 table
 {
-    border: 10px solid black;
+    border: 5px ridge gray;
     margin-top: 17%;
     margin-left: auto;
     margin-right: auto;
     padding: 10px;
     font-size: 1.5vw;
-    font-family: 'K2D', sans-serif;;
+    font-family: 'K2D', sans-serif;
+    border-radius: 10px;
 }
 td:first-child
 {
