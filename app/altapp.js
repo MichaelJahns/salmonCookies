@@ -10,8 +10,12 @@ var staffTotal = [];
 var totalOfTotals = 0;
 var totalOfStaffTotals = 0;
 
+//HTML Table Elements
 var staffTable = document.getElementById('staff');
 var salmonTable = document.getElementById('data');
+//HTML Form Elements
+var submission = document.getElementById('submission');
+var form = document.getElementById('newStore');
 
 //Location Constructor
 function LocationDemo(locationName, minCustomersHourly, maxCustomersHourly, cookiesPerCustomer)
@@ -42,33 +46,35 @@ LocationDemo.prototype.sampleCustomers = function()
 {
   for(var i = 0; i < hours.length; i++){
     var sampleCustomers = random(this.minCustomersHourly, this.maxCustomersHourly)
-    this.customersHourly.push(sampleCustomers);
+    this.customersHourly[i] = sampleCustomers;
   }
 };
 
 //Populate one instance of cookiesHourly and cookiesTotal
 LocationDemo.prototype.sampleCookies = function()
 {
+  this.cookiesTotal = 0;
   for(var i = 0; i < hours.length; i++)
   {
     var sampleCookies= Math.floor(this.cookiesPerCustomer*this.customersHourly[i]);
-    this.cookiesHourly.push(sampleCookies);
+    this.cookiesHourly[i] = sampleCookies;
     this.cookiesTotal += sampleCookies;
   }
 }
 //Second Table
 LocationDemo.prototype.staffing = function()
 {
+  this.staffTotal = 0;
   for(var i = 0; i < hours.length; i++)
   {
     this.staffNeeded[i] = 2
-    if (this.cookiesHourly[i] > 40)
+    if (this.customersHourly[i] > 40)
     {
-      this.staffNeeded[i] = Math.ceil((this.cookiesHourly[i]-40) /20) +2;
+      this.staffNeeded[i] = Math.ceil((this.customersHourly[i]-40) /20) +2;
     }
     this.staffTotal += this.staffNeeded[i];
   }
-  console.table(locations);
+  // console.table(locations);
 }
 
 //Populate all instances of customersHourly and cookiesHourly and cookiesTotal and staffNeeded
@@ -79,15 +85,19 @@ function populateTable()
     locations[i].sampleCookies();
     locations[i].staffing();
   }
+  console.table(locations);
 }
-//Hourly Cookie Totals
-function pollHourly()
+//Hourly Cookie and Staff Totals
+function pollTotals()
 {
+  totalOfTotals = 0;
+  totalOfStaffTotals = 0;
   //Fill string with blank values
   for(var k = 0; k < hours.length; k++)
   {
     var blank = 0;
-    hourlyTotal.push(blank);
+    hourlyTotal[k] = blank;
+    staffTotal[k] = blank;
   }
   for(var i = 0; i < hours.length; i++)
   {
@@ -95,31 +105,15 @@ function pollHourly()
     {
       hourlyTotal[i] = hourlyTotal[i] + locations[j].cookiesHourly[i];
       // console.log (`${hourlyTotal} += ${locations[0].cookiesHourly[i]}`)
-    }
-    totalOfTotals += hourlyTotal[i]
-  }
-  return(totalOfTotals);
-}
-
-//Hourly Staff Needs
-function pollStaff()
-{
-  //Fill string with blank values
-  for(var k = 0; k < hours.length; k++)
-  {
-    var blank = 0;
-    staffTotal.push(blank);
-  }
-  for(var i = 0; i < hours.length; i++)
-  {
-    for(var j = 0; j < locations.length; j++){
       staffTotal[i] = staffTotal[i] + locations[j].staffNeeded[i];
       // console.log (`${hourlyTotal} += ${locations[0].cookiesHourly[i]}`)
     }
+    totalOfTotals += hourlyTotal[i]
     totalOfStaffTotals += staffTotal[i]
   }
-  return(totalOfTotals);
+  return(totalOfTotals, totalOfStaffTotals);
 }
+
 //Helper Functions
 function random(min, max){
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -130,12 +124,20 @@ function createElement(type, content, parent){
   parent.appendChild(element);
 }
 function renderTables(){
+  salmonTable.innerHTML = '';
+  staffTable.innerHTML = '';
   renderHeader();
   for(var i = 0; i < locations.length; i++){
     locations[i].renderBody();
   }
   renderFooter();
 }
+function refreshPage(){
+  populateTable();
+  pollTotals();
+  renderTables();
+}
+
 
 //Render Functions
 
@@ -197,9 +199,39 @@ function renderFooter(){
   createElement('th', totalOfStaffTotals, trEl);
   staffTable.appendChild(trEl);
 }
+function Render(){
+
+}
 //========================================
 //Executable Code
-populateTable();
-pollHourly();
-pollStaff();
-renderTables();
+
+function submit(event){
+  console.log(`New Store Data has been submitted.`);
+  event.preventDefault();
+
+  var existing = false;
+  for(var i = 0; i < locations.length; i++){
+    if(locations[i].locationName.includes(form.where.value))
+    {
+      existing = true;
+      console.log(existing);
+      locations.splice(i, 1);
+      break;
+    }
+    else
+    {
+      console.log(existing);
+    }
+  }
+
+  new LocationDemo(form.where.value, parseInt(form.min.value), parseInt(form.max.value), parseInt(form.average.value));
+
+  refreshPage();
+  form.where.value = null;
+  form.min.value = null;
+  form.max.value = null;
+  form.average.value = null;
+}
+submission.addEventListener('click', submit);
+
+refreshPage();
