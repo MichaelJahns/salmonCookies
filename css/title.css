@@ -1,0 +1,49 @@
+/*Title Bar */
+#titleBar
+{
+    top: 0;
+    position: absolute;
+    background-color: rgb(86, 173, 199);
+    right: 40%;
+    width: 80%;
+    border-bottom: gray 5px ridge;
+    border-right: gray 5px ridge;
+    transform: skewX(-30deg);
+}
+#titleBar > img
+{
+    margin-left: 35%;
+    max-width: 60%;
+}
+#titleBar > h1
+{
+    top: 44%;
+    margin-left: 25%;
+    left: 18%;
+    color:rgb(182, 185, 8);
+    text-shadow: 3px 3px gray;
+    position: absolute;
+    font-family: 'Pirata One', cursive;
+}
+#titleBorder
+{
+    top: 55%;
+    margin-left: 45%;
+    position: absolute;
+    border-right: orangered 5px ridge;
+    border-bottom:orangered 5px ridge;
+    height: 10%;
+    width: 35%;
+    transform: skewX(-20deg)
+}
+#titleBorder2
+{
+    top: 55%;
+    margin-left: 43%;
+    position: absolute;
+    border-right: orangered 5px ridge;
+    border-bottom: orangeRed 5px ridge;
+    height: 10%;
+    width: 35%;
+    transform: skewX(-20deg)
+}
