@@ -56,7 +56,7 @@ LocationDemo.prototype.sampleCookies = function()
   this.cookiesTotal = 0;
   for(var i = 0; i < hours.length; i++)
   {
-    var sampleCookies= Math.floor(this.cookiesPerCustomer*this.customersHourly[i]);
+    var sampleCookies= Math.ceil(this.cookiesPerCustomer*this.customersHourly[i]);
     this.cookiesHourly[i] = sampleCookies;
     this.cookiesTotal += sampleCookies;
   }
@@ -199,16 +199,11 @@ function renderFooter(){
   createElement('th', totalOfStaffTotals, trEl);
   staffTable.appendChild(trEl);
 }
-function Render(){
-
-}
-//========================================
-//Executable Code
-
+//New Store Form Submission
 function submit(event){
   console.log(`New Store Data has been submitted.`);
   event.preventDefault();
-
+  //Check if location exists
   var existing = false;
   for(var i = 0; i < locations.length; i++){
     if(locations[i].locationName.includes(form.where.value))
@@ -218,20 +213,18 @@ function submit(event){
       locations.splice(i, 1);
       break;
     }
-    else
-    {
-      console.log(existing);
-    }
   }
-
-  new LocationDemo(form.where.value, parseInt(form.min.value), parseInt(form.max.value), parseInt(form.average.value));
-
+  //Create instance of New location, //re-ender tables and clear form
+  new LocationDemo(form.where.value, parseFloat(form.min.value), parseFloat(form.max.value), parseFloat(form.average.value));
+  
   refreshPage();
   form.where.value = null;
   form.min.value = null;
   form.max.value = null;
   form.average.value = null;
 }
-submission.addEventListener('click', submit);
 
+//========================================
+//Executable Code
+submission.addEventListener('click', submit);
 refreshPage();
