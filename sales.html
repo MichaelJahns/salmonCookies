@@ -7,29 +7,31 @@
 
 <body>
 
+        <form id=newStore>
+                <div id=boxTop> New Store 
+                        <fieldset id=boxBase>                          
+                                <label for = "where"> WHERE </label>
+                                <input name= "where" type="text" size="15" required /> 
+                                
+                                <label for="min"> MINIMUM CUSTOMERS</label>
+                                <input name="min" type="number" size="15" required /> 
+                                
+                                <label for="max"> MAXIUMUM CUSTOMERS</label>
+                                <input name="max" type="number" size="15" required /> 
+                                
+                                <label for="average"> AVERAGE SALE PER CUSTOMER</label>
+                                <input name="average" type="number" size="15" required /> 
+                                
+                                <button id="submission"> Submit </button>
+                                
+                              </fieldset>                    
+                </div>
+            </form>
     <table id=data></table>
     <table id=staff></table>
 
-    <form id=newStore>
-        <fieldset>
-          <legend> Manually Add Store </legend>
-          
-          <label for = "where"> Where: </label>
-          <input name= "where" type="text" size="15" required /> 
-          
-          <label for="min"> Minimum Customers Per Hour</label>
-          <input name="min" type="number" size="15" required /> 
-          
-          <label for="max"> Maximum Customers Per Hour</label>
-          <input name="max" type="number" size="15" required /> 
-          
-          <label for="average"> Average Cookies per customer</label>
-          <input name="average" type="number" size="15" required /> 
-          
-          <button id="submission"> Submit </button>
-          
-        </fieldset>
-        </form>
+    
+    <div id=breathingRoom></div>
 
     <div id = titleBar>
             <div id="titleBorder">  </div>

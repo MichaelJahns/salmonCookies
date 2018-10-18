@@ -10,13 +10,9 @@
     background-color: #A2E8F4;
 }
 /* Table */
-#staff
+#data
 {
-    margin-bottom: 30%;
-}
-table:first-child
-{
-    margin-top: 17%;
+    margin-top: -8%;
 }
 table
 {
@@ -201,10 +197,63 @@ a
     padding: 5px;
 }
 /* Form */
-form
+#newStore
 {
-    position: absolute;
-    margin-top: 30%;
-    height: 50%;
-    outline: red 3px solid;
+    height: 300px;
+    width: 500px;
+    margin: 10% auto 0 auto;
+
+    text-align: center;
+
+    overflow: hidden;
+
+    border: gray ridge 5px;
+    border-radius: 10px;
+    background-color: rgb(86, 173, 199);
+
+    transform: scale(.2);
+}
+#newStore:hover
+{
+    transform: scale(1);
+}
+#boxBase
+{
+    height: 300px;
+
+    font-size: 2vw;
+    line-height: 40px;
+}
+#boxTop
+{
+    font-size: 5vw;
+    line-height: 300px;
+}    
+#boxTop:hover
+{
+    margin-top: -300px;
+    transition: 1s all ease;
+}
+#boxBase > label
+{
+    font-size: 1.8vw;
+    display: block;
+    text-align: center;
+    letter-spacing: 4px;
+}
+#boxBase > input
+{
+    border: none;
+    background-color: transparent;
+    border-bottom: gray 2px ridge;
+    width: 70%;
+}
+#boxBase > button
+{
+    display: block;
+    margin: 20px auto;
+}
+#breathingRoom
+{
+    margin-top: 15%
 }
