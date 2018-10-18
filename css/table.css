@@ -1,0 +1,113 @@
+
+/* Table */
+#data
+{
+    margin-top: -8%;
+}
+table
+{
+    border: 5px ridge gray;
+    margin-top: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+    font-size: 1.5vw;
+    font-family: 'K2D', sans-serif;
+    border-radius: 10px;
+}
+td:first-child
+{
+    border-right: 1px black solid;
+    border-bottom: 1px black solid;
+}
+tr
+{
+    background-color: rgb(184, 188, 189);
+}
+td 
+{
+    padding: 5px;
+    margin: 10px;
+    background: white;
+    text-align: center;
+}
+th:last-child
+{
+    border-left: black 1px solid;
+}
+th:first-child
+{
+    border-right: black 1px solid;
+}
+th
+{
+    background-color: rgb(86, 173, 199);
+    color: white;
+    margin-left: 10px;
+    padding: 10px;
+    border-top: black 1px solid;
+    border-bottom: black 1px solid;
+}
+
+/* Form */
+#newStore
+{
+    height: 300px;
+    width: 500px;
+    margin: 16% auto 0 auto;
+
+    text-align: center;
+
+    overflow: hidden;
+
+    border: gray ridge 5px;
+    border-radius: 10px;
+    background-color: rgb(86, 173, 199);
+
+    transform: scale(.2);
+    z-index: 300;
+}
+#newStore:hover
+{
+    transform: scale(1);
+}
+#boxBase
+{
+    height: 300px;
+
+    font-size: 2vw;
+    line-height: 40px;
+}
+#boxTop
+{
+    font-size: 5vw;
+    line-height: 300px;
+}    
+#boxTop:hover
+{
+    margin-top: -300px;
+    transition: 1s all ease;
+}
+#boxBase > label
+{
+    font-size: 1.8vw;
+    display: block;
+    text-align: center;
+    letter-spacing: 4px;
+}
+#boxBase > input
+{
+    border: none;
+    background-color: transparent;
+    border-bottom: gray 2px ridge;
+    width: 70%;
+}
+#boxBase > button
+{
+    display: block;
+    margin: 20px auto;
+}
+#breathingRoom
+{
+    margin-top: 15%
+}
