@@ -216,7 +216,7 @@ function submit(event){
   }
   //Create instance of New location, //re-ender tables and clear form
   new LocationDemo(form.where.value, parseFloat(form.min.value), parseFloat(form.max.value), parseFloat(form.average.value));
-  
+
   refreshPage();
   form.where.value = null;
   form.min.value = null;

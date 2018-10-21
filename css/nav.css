@@ -12,6 +12,7 @@
     border-left: gray 5px ridge;
     transform: skewX(-30deg);
     font-size: 1.5vw;
+    z-index: 1000;
 }
 #navBar > button:first-child
 {

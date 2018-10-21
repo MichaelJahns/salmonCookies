@@ -11,8 +11,9 @@ body
 main
 {
     width:960px;
+    height: 100%;
     margin: 220px auto 30px auto;
-    outline: blue dotted 5px;
+    /* outline: blue dotted 2px; */
 }
 img[title="hero"]
 {
@@ -23,7 +24,7 @@ img[title="hero"]
     border: gray 2px ridge;
     border-radius: 10px gray ridge;
 }
-section
+#bodyBlock section
 {
     margin-top: 30px;
     overflow: scroll;
@@ -35,7 +36,6 @@ section > h2
     text-align: center;
     font-size: 2.5vw;
     border-bottom: 2px gray ridge;
-    /* display: inline; */
 }
 section > img
 {
@@ -51,73 +51,14 @@ section > img
     border: 1px gray solid;
     border-radius: 20px;
     padding: 20px;
+    margin: 60px auto;
     background-color: rgb(170, 216, 216);
 }
-/* Storefront */
-#storeFront * img
+section:last-child
 {
-    opacity: 1;
-    position: absolute;
-    height: 500px;
-    width: 435px;
+    margin-bottom: 100px;
 }
-#storeFront * img:hover
+li
 {
-    opacity: .3;
-}
-img[title=fish]
-{
-    position: absolute;
-    left: 15%;
-    top: 45%;
-}
-img[title=cutme]
-{
-    position: absolute;
-    right: 15%;
-    top: 45%;
-}
-img[title=pillow]
-{
-    position: absolute;
-    width: 100%;
-    right: 15%;
-    top: 145%;
-}
-img[title=shirt]
-{
-    position: absolute;
-    left: 15%;
-    top: 145%;
-}
-#fish
-{
-    position: absolute;
-    left: 15%;
-    top: 45%;
-}
-#cutme
-{
-    position: absolute;
-    right: 15%;
-    top: 45%;
-}
-#pillow
-{
-    position: absolute;
-    width: 100%;
-    right: 15%;
-    top: 145%;
-}
-#shirt
-{
-    position: absolute;
-    left: 15%;
-    top: 145%;
-}
-#storeFront > div
-{
-    position: absolute;
-    width: 435px;
-    height: 500px;
+    list-style-type: disc;
 }
