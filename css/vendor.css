@@ -14,9 +14,10 @@ main
     height: 100%;
     margin: 220px auto;
 }
-/* IMAGES */
-#storeFront > img
+/* STORE GALLERY */
+#storeFront > div
 {
+    /* overflow: hidden; */
     opacity: 1;
 
     float: left;
@@ -27,15 +28,43 @@ main
     margin-right: 30px;
     margin-top: 10px;
     margin-bottom: 80px;
+    padding: 0px;
+
+    background-color: gray;
     border: gray 5px ridge;
     border-radius: 10px;
-    padding: 0;
+    
 }
-#storeFront img:nth-child(3n)
+#storeFront > div:nth-child(3n)
 {
     margin-right: 0px;
+}
+/* IMAGES */
+#storeFront img
+{
+    opacity: 1;
+
+    float: left;
+    position: absolute;
+    height: 375px;
+    width: 290px;
+
+    padding: 0px;
+    margin:0px;
+
+    z-index: 1;
 }
 #storeFront img:hover
 {
     opacity: .3;
+}
+/* IMAGE DESCRIPTIONS */
+p
+{
+    opacity: 1;
+    position: absolute;
+    width: 300px;
+    height: 375px;
+    z-index: 1;
+    font-size: 24px;
 }

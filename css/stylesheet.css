@@ -13,7 +13,7 @@ main
     width:960px;
     height: 100%;
     margin: 220px auto 30px auto;
-    outline: blue dotted 2px;
+    /* outline: blue dotted 2px; */
 }
 img[title="hero"]
 {
@@ -51,5 +51,14 @@ section > img
     border: 1px gray solid;
     border-radius: 20px;
     padding: 20px;
+    margin: 60px auto;
     background-color: rgb(170, 216, 216);
+}
+section:last-child
+{
+    margin-bottom: 100px;
+}
+li
+{
+    list-style-type: disc;
 }
