@@ -14,8 +14,7 @@ var totalOfStaffTotals = 0;
 var staffTable = document.getElementById('staff');
 var salmonTable = document.getElementById('data');
 //HTML Form Elements
-var submission = document.getElementById('submission');
-var form = document.getElementById('newStore');
+var submission = document.getElementById('newStore');
 
 //Location Constructor
 function LocationDemo(locationName, minCustomersHourly, maxCustomersHourly, cookiesPerCustomer)
@@ -200,13 +199,13 @@ function renderFooter(){
   staffTable.appendChild(trEl);
 }
 //New Store Form Submission
-function submit(event){
+function formSubmit(event){
   console.log(`New Store Data has been submitted.`);
   event.preventDefault();
   //Check if location exists
   var existing = false;
   for(var i = 0; i < locations.length; i++){
-    if(locations[i].locationName.includes(form.where.value))
+    if(locations[i].locationName.includes(event.target.where.value))
     {
       existing = true;
       console.log(existing);
@@ -214,17 +213,17 @@ function submit(event){
       break;
     }
   }
-  //Create instance of New location, //re-ender tables and clear form
-  new LocationDemo(form.where.value, parseFloat(form.min.value), parseFloat(form.max.value), parseFloat(form.average.value));
+  //Create instance of New location, //re-ender tables and clear event.target
+  new LocationDemo(event.target.where.value, parseFloat(event.target.min.value), parseFloat(event.target.max.value), parseFloat(event.target.average.value));
 
   refreshPage();
-  form.where.value = null;
-  form.min.value = null;
-  form.max.value = null;
-  form.average.value = null;
+  event.target.where.value = null;
+  event.target.min.value = null;
+  event.target.max.value = null;
+  event.target.average.value = null;
 }
 
 //========================================
 //Executable Code
-submission.addEventListener('click', submit);
+submission.addEventListener('submit', formSubmit);
 refreshPage();
